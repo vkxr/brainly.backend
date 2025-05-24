@@ -1,7 +1,14 @@
+require('dotenv').config();
 import mongoose from "mongoose";
 
+
+const MONGO = process.env.MONGO_URL;
+if (!MONGO) {
+  throw new Error("JWT_SECRET is not defined in the environment variables")
+}
+
 mongoose.connect(
-  "mongodb+srv://vkrao800:raovk2004@cluster0.hhav2xg.mongodb.net/brainly"
+     MONGO
 );
 
 const userSchema = new mongoose.Schema({
